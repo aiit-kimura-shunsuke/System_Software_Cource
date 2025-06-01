@@ -1,4 +1,5 @@
-# System_Software_Cource
+# System Software Cource Kadai4
 
 25745115
-https://github.com/aiit-kimura-shunsuke/System_Software_Cource
+https://github.com/aiit-kimura-shunsuke/kadai4
+

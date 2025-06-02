@@ -1,0 +1,12 @@
+name: actions-trial
+on: [push]
+jobs:
+  check-bats-version:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Permission Setting
+        run: chmod +x test.sh highest_common_factor.sh
+      - name: Test Run
+      - run: ./test.sh

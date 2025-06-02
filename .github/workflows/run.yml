@@ -9,4 +9,4 @@ jobs:
       - name: Permission Setting
         run: chmod +x test.sh highest_common_factor.sh
       - name: Test Run
-      - run: ./test.sh
+        run: ./test.sh

@@ -1,7 +1,5 @@
 #!/bin/bash
-a="$1"
-b="$2"
-
+# 引数が2つあるかチェック
 if [ $# -ne 2 ]; then
     echo "input 2 argments" 1>&2
     echo "a"
@@ -31,5 +29,12 @@ if ! [[ "$2" =~ ^[1-9][0-9]*$ ]]; then
     echo "f"
     exit 1
 fi
-echo "z"
-exit 0
+
+x="$1"
+y="$2"
+while [ "$y" -ne 0 ]; do
+    r=$(( x % y ))
+    x=$y
+    y=$r
+done
+echo "$x"

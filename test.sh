@@ -70,10 +70,28 @@ diff $tmp-ans $tmp-nat || ERROR_EXIT "error in test18-2"
 # 引数あり 2つ　$2が半角文字
 "$TARGET" 12 "b" 2>$tmp-ans && ERROR_EXIT "error in test19-1"
 diff $tmp-ans $tmp-nat || ERROR_EXIT "error in test19-2"
-# 引数あり 2つ　公約数がおかしい
-# 引数あり 2つ　公約数があっている
-# 引数あり 2つ　公約数があっている　引数を入れ替えて同じ値になるか
-# 引数あり 2つ　公約数があっている　両方とも同じ引数
-# 引数あり 2つ　公約数があっている　片方が1
+
 # 引数あり 2つ　公約数があっている　互いに素
-# 引数あり 2つ　公約数があっている　極端に大きな数
+echo "1" > $tmp-exp
+"$TARGET" 2 3 > $tmp-ans || ERROR_EXIT "error in test20-1"
+diff $tmp-ans $tmp-exp || ERROR_EXIT "error in test20-2"
+# 引数あり 2つ　公約数があっている
+echo "6" > $tmp-exp
+"$TARGET" 48 18 > $tmp-ans || ERROR_EXIT "error in test21-1"
+diff $tmp-ans $tmp-exp || ERROR_EXIT "error in test21-2"
+# 引数あり 2つ　公約数があっている　引数を入れ替えて同じ値になるか
+echo "6" > $tmp-exp
+"$TARGET" 18 48 > $tmp-ans || ERROR_EXIT "error in test22-1"
+diff $tmp-ans $tmp-exp || ERROR_EXIT "error in test22-2"
+# # 正常系: 同じ引数 (7, 7) → 7
+echo "7" > $tmp-exp
+"$TARGET" 7 7 > $tmp-ans || ERROR_EXIT "error in test23-1"
+diff $tmp-ans $tmp-exp || ERROR_EXIT "error in test23-2"
+# 引数あり 2つ　公約数があっている　片方が1
+echo "1" > $tmp-exp
+"$TARGET" 1 10 > $tmp-ans || ERROR_EXIT "error in test24-1"
+diff $tmp-ans $tmp-exp || ERROR_EXIT "error in test24-2"
+# 引数あり 2つ　公約数があっている　大きな数
+echo "12" > $tmp-exp
+"$TARGET" 123456 789012 > $tmp-ans || ERROR_EXIT "error in test25-1"
+diff $tmp-ans $tmp-exp || ERROR_EXIT "error in test25-2"

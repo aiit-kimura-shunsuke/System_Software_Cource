@@ -1,6 +1,6 @@
 #!/bin/bash
 
-TARGET="./highest_common_factor.sh"
+TARGET="./gcd.sh"
 
 tmp=/tmp/$$ # 変数を使って表記を短く
 echo "input 2 argments" > $tmp-args    # 回答準備：引数の数

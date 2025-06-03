@@ -7,6 +7,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Permission Setting
-        run: chmod +x test.sh highest_common_factor.sh
+        run: chmod +x test.sh gcd.sh
       - name: Test Run
         run: ./test.sh

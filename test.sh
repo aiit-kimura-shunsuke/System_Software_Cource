@@ -6,14 +6,6 @@ tmp=/tmp/$$ # 変数を使って表記を短く
 echo "input 2 argments" > $tmp-args    # 回答準備：引数の数
 echo "input natural number" > $tmp-nat # 回答準備：数字じゃない
 
-# if [[ $result = 1 ]]; then
-#     echo "OK"
-#     exit 0
-# else
-#     echo "NG"
-#     exit 1
-# fi
-
 ERROR_EXIT () {
   echo "$1" >&2   # エラーメッセージ(引数1)を標準エラー出力に表示
   rm -f $tmp-*    # 作った一時ファイルをまとめて削除
@@ -54,11 +46,30 @@ diff $tmp-ans $tmp-nat || ERROR_EXIT "error in test10-2"
 # 引数あり 2つ　$2に先頭にゼロ付き数字
 "$TARGET" 5 080 2>$tmp-ans && ERROR_EXIT "error in test11-1"
 diff $tmp-ans $tmp-nat || ERROR_EXIT "error in test11-2"
-
-
-# 引数あり 2つ　文字（空文字列）
-# 引数あり 2つ　文字（半角スペース）
-# 引数あり 2つ　文字（全角文字）
+# 引数あり 2つ　$1が空文字列
+"$TARGET" "" 80 2>$tmp-ans && ERROR_EXIT "error in test12-1"
+diff $tmp-ans $tmp-nat || ERROR_EXIT "error in test12-2"
+# 引数あり 2つ　$1が空文字列
+"$TARGET" 40 ”” 2>$tmp-ans && ERROR_EXIT "error in test13-1"
+diff $tmp-ans $tmp-nat || ERROR_EXIT "error in test13-2"
+# 引数あり 2つ　$1が半角スペース
+"$TARGET" " " 80 2>$tmp-ans && ERROR_EXIT "error in test14-1"
+diff $tmp-ans $tmp-nat || ERROR_EXIT "error in test14-2"
+# 引数あり 2つ　$2が半角スペース
+"$TARGET" 50 " " 2>$tmp-ans && ERROR_EXIT "error in test15-1"
+diff $tmp-ans $tmp-nat || ERROR_EXIT "error in test15-2"
+# 引数あり 2つ　$1が全角文字
+"$TARGET" "あ" 80 2>$tmp-ans && ERROR_EXIT "error in test16-1"
+diff $tmp-ans $tmp-nat || ERROR_EXIT "error in test16-2"
+# 引数あり 2つ　$2が全角文字
+"$TARGET" 18 "い" 2>$tmp-ans && ERROR_EXIT "error in test17-1"
+diff $tmp-ans $tmp-nat || ERROR_EXIT "error in test17-2"
+# 引数あり 2つ　$1が半角文字
+"$TARGET" "a" 80 2>$tmp-ans && ERROR_EXIT "error in test18-1"
+diff $tmp-ans $tmp-nat || ERROR_EXIT "error in test18-2"
+# 引数あり 2つ　$2が半角文字
+"$TARGET" 12 "b" 2>$tmp-ans && ERROR_EXIT "error in test19-1"
+diff $tmp-ans $tmp-nat || ERROR_EXIT "error in test19-2"
 # 引数あり 2つ　公約数がおかしい
 # 引数あり 2つ　公約数があっている
 # 引数あり 2つ　公約数があっている　引数を入れ替えて同じ値になるか
@@ -66,4 +77,3 @@ diff $tmp-ans $tmp-nat || ERROR_EXIT "error in test11-2"
 # 引数あり 2つ　公約数があっている　片方が1
 # 引数あり 2つ　公約数があっている　互いに素
 # 引数あり 2つ　公約数があっている　極端に大きな数
-# 引数あり 2つ　0012など先頭にゼロのある整数
